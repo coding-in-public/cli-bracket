@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "run": "node index.js",
-    "transpile": "tsc index.ts --outDir ../dist"
+    "transpile": "tsc src/index.ts --outDir ./dist"
   },
   "keywords": [],
   "author": "Chris Pennington",
