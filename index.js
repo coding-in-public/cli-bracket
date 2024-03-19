@@ -2,6 +2,7 @@
 
 import * as p from "@clack/prompts";
 import { setTimeout } from "node:timers/promises";
+import fetch from "node-fetch";
 
 const cliTools = [
   "jq",
