@@ -4,6 +4,15 @@ import * as p from "@clack/prompts";
 import { setTimeout } from "node:timers/promises";
 import fetch from "node-fetch";
 
+const generateOptions = (tools) => {
+  return tools.map((tool) => {
+    return {
+      value: tool,
+      label: `${tool} (${cliDescriptions[tool]})`,
+    };
+  });
+};
+
 const cliTools = [
   "jq",
   "fzf",
@@ -23,6 +32,25 @@ const cliTools = [
   "youtube-dl",
 ];
 
+const cliDescriptions = {
+  jq: "JSON reading, parsing, and manipulating",
+  fzf: "Command-line fuzzy finder",
+  tldr: "A terminal based readme viewer",
+  cURL: "A command line tool for transferring data with URL syntax",
+  ffmpeg: "Record, convert, and stream audio and video",
+  bat: "A cat(1) clone with syntax highlighting",
+  cat: "Concatenate and print files",
+  z: "A faster way to navigate your filesystem",
+  Tmux: "The terminal multiplexer",
+  vim: "Vi IMproved",
+  wget: "A network utility to retrieve files",
+  exa: "A modern replacement for ls",
+  lazydocker: "A terminal application for managing containers",
+  httpie: "A command line http client",
+  neovim: "A powerful text editor",
+  "youtube-dl": "A command line program to download videos from YouTube",
+};
+
 async function main() {
   console.clear();
 
@@ -40,66 +68,42 @@ async function main() {
       pick1_1: ({ results }) =>
         p.select({
           message: "Round 1. Pick 1.",
-          options: [
-            { value: cliTools[0], label: cliTools[0] },
-            { value: cliTools[1], label: cliTools[1] },
-          ],
+          options: generateOptions([cliTools[0], cliTools[1]]),
         }),
       pick1_2: ({ results }) =>
         p.select({
           message: "Round 1. Pick 2.",
-          options: [
-            { value: cliTools[2], label: cliTools[2] },
-            { value: cliTools[3], label: cliTools[3] },
-          ],
+          options: generateOptions([cliTools[2], cliTools[3]]),
         }),
       pick1_3: ({ results }) =>
         p.select({
           message: "Round 1. Pick 3.",
-          options: [
-            { value: cliTools[4], label: cliTools[4] },
-            { value: cliTools[5], label: cliTools[5] },
-          ],
+          options: generateOptions([cliTools[4], cliTools[5]]),
         }),
       pick1_4: ({ results }) =>
         p.select({
           message: "Round 1. Pick 4.",
-          options: [
-            { value: cliTools[6], label: cliTools[6] },
-            { value: cliTools[7], label: cliTools[7] },
-          ],
+          options: generateOptions([cliTools[6], cliTools[7]]),
         }),
       pick1_5: ({ results }) =>
         p.select({
           message: "Round 1. Pick 5.",
-          options: [
-            { value: cliTools[8], label: cliTools[8] },
-            { value: cliTools[9], label: cliTools[9] },
-          ],
+          options: generateOptions([cliTools[8], cliTools[9]]),
         }),
       pick1_6: ({ results }) =>
         p.select({
           message: "Round 1. Pick 6.",
-          options: [
-            { value: cliTools[10], label: cliTools[10] },
-            { value: cliTools[11], label: cliTools[11] },
-          ],
+          options: generateOptions([cliTools[10], cliTools[11]]),
         }),
       pick1_7: ({ results }) =>
         p.select({
           message: "Round 1. Pick 7.",
-          options: [
-            { value: cliTools[12], label: cliTools[12] },
-            { value: cliTools[13], label: cliTools[13] },
-          ],
+          options: generateOptions([cliTools[12], cliTools[13]]),
         }),
       pick1_8: ({ results }) =>
         p.select({
           message: "Round 1. Pick 8.",
-          options: [
-            { value: cliTools[14], label: cliTools[14] },
-            { value: cliTools[15], label: cliTools[15] },
-          ],
+          options: generateOptions([cliTools[14], cliTools[15]]),
         }),
       advanceToRound2: ({ results }) =>
         p.note(
@@ -118,34 +122,22 @@ async function main() {
       pick2_1: ({ results }) =>
         p.select({
           message: "Round 2. Pick 1.",
-          options: [
-            { value: results.pick1_1, label: results.pick1_1 },
-            { value: results.pick1_2, label: results.pick1_2 },
-          ],
+          options: generateOptions([results.pick1_1, results.pick1_2]),
         }),
       pick2_2: ({ results }) =>
         p.select({
           message: "Round 2. Pick 2.",
-          options: [
-            { value: results.pick1_3, label: results.pick1_3 },
-            { value: results.pick1_4, label: results.pick1_4 },
-          ],
+          options: generateOptions([results.pick1_3, results.pick1_4]),
         }),
       pick2_3: ({ results }) =>
         p.select({
           message: "Round 2. Pick 3.",
-          options: [
-            { value: results.pick1_5, label: results.pick1_5 },
-            { value: results.pick1_6, label: results.pick1_6 },
-          ],
+          options: generateOptions([results.pick1_5, results.pick1_6]),
         }),
       pick2_4: ({ results }) =>
         p.select({
           message: "Round 2. Pick 4.",
-          options: [
-            { value: results.pick1_7, label: results.pick1_7 },
-            { value: results.pick1_8, label: results.pick1_8 },
-          ],
+          options: generateOptions([results.pick1_7, results.pick1_8]),
         }),
       advanceToRound3: ({ results }) =>
         p.note(
@@ -160,18 +152,12 @@ async function main() {
       pick3_1: ({ results }) =>
         p.select({
           message: "Round 3. Pick 1.",
-          options: [
-            { value: results.pick2_1, label: results.pick2_1 },
-            { value: results.pick2_2, label: results.pick2_2 },
-          ],
+          options: generateOptions([results.pick2_1, results.pick2_2]),
         }),
       pick3_2: ({ results }) =>
         p.select({
           message: "Round 3. Pick 2.",
-          options: [
-            { value: results.pick2_3, label: results.pick2_3 },
-            { value: results.pick2_4, label: results.pick2_4 },
-          ],
+          options: generateOptions([results.pick2_3, results.pick2_4]),
         }),
       advanceToRound4: ({ results }) =>
         p.note(
@@ -181,10 +167,7 @@ async function main() {
       pick4_1: ({ results }) =>
         p.select({
           message: "Your Champion!",
-          options: [
-            { value: results.pick3_1, label: results.pick3_1 },
-            { value: results.pick3_2, label: results.pick3_2 },
-          ],
+          options: generateOptions([results.pick3_1, results.pick3_2]),
         }),
     },
     {
