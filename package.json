@@ -1,6 +1,6 @@
 {
   "name": "cli-bracket-challenge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Choose your favorite CLI tool in 4 rounds of head-to-head match ups.",
   "main": "index.js",
   "type": "module",
