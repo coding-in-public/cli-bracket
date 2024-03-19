@@ -1,14 +1,14 @@
 {
   "name": "cli-bracket-challenge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Choose your favorite CLI tool in 4 rounds of head-to-head match ups.",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "run": "node index.js",
-    "transpile": "tsc src/index.ts --outDir ."
+    "run": "node index.js"
   },
   "keywords": [],
+  "bin": "./index.js",
   "author": "Chris Pennington",
   "license": "ISC",
   "dependencies": {
