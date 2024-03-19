@@ -1,13 +1,14 @@
 {
   "name": "cli-bracket",
   "version": "1.0.0",
-  "description": "",
+  "description": "Choose your favorite CLI tool in 4 rounds of head-to-head match ups.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node index.js",
+    "transpile": "tsc src/index.ts --outDir ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Chris Pennington",
   "license": "ISC",
   "dependencies": {
     "@clack/prompts": "^0.7.0",

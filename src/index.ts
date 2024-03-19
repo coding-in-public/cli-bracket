@@ -1,29 +1,8 @@
+#!/usr/bin/env node
+
 import * as p from "@clack/prompts";
 import { setTimeout } from "node:timers/promises";
 import color from "picocolors";
-
-const createBracketSegment = ({
-  round,
-  pick,
-  teams,
-}: {
-  round: number;
-  pick: number;
-  teams: string[];
-}) => {
-  const maxLength = Math.max(...teams.map((i) => i.length));
-  const teamData = teams.map((i) => ({
-    name: i,
-    spaces: " ".repeat(maxLength - i.length),
-  }));
-
-  return `\nRound ${round}. Pick ${pick}.\n\n
-${teamData[0].spaces}${teamData[0].name} \\
-${" ".repeat(maxLength + 3)}${"_".repeat(6)}
-
-${teamData[1].spaces}${teamData[1].name} /
-`;
-};
 
 const cliTools = [
   "jq",
@@ -260,23 +239,24 @@ async function main() {
       }
     }
 
-    await fetch("http://localhost:4321/api/addEntry.json", {
+    await fetch("https://cli-bracket-website.vercel.app/api/addEntry.json", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     s.message("Submitted your picks!");
-    await setTimeout(500);
-    s.message("Fetching stats...");
+    await setTimeout(1000);
+    s.message("Fetching stats for all players…");
 
-    const stats = await fetch("http://localhost:4321/api/getEntries.json");
+    const stats = await fetch(
+      "https://cli-bracket-website.vercel.app/api/getEntries.json"
+    );
+    await setTimeout(1000);
     p.note(await stats.json(), "Stats!");
-    s.stop("Stats!");
+    s.stop();
   }
 
-  p.outro(
-    `Problems? ${color.underline(color.cyan("https://example.com/issues"))}`
-  );
+  p.outro(`Thanks for playing!`);
 }
 
 main().catch(console.error);
