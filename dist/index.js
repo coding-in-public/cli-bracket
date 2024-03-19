@@ -39,7 +39,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var p = require("@clack/prompts");
 var promises_1 = require("node:timers/promises");
-var picocolors_1 = require("picocolors");
 var cliTools = [
     "jq",
     "fzf",
@@ -68,7 +67,7 @@ function main() {
                     return [4 /*yield*/, (0, promises_1.setTimeout)(500)];
                 case 1:
                     _f.sent();
-                    p.intro("".concat(picocolors_1["default"].bgGreen(picocolors_1["default"].black(" Welcome to CLI Madness 2024 "))));
+                    p.intro(" Welcome to CLI Madness 2024 ");
                     return [4 /*yield*/, p.group({
                             rules: function () {
                                 return p.note("Choose your favorite CLI tool in 4 rounds of head-to-head match ups.", "Tourney Rules");

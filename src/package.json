@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "Choose your favorite CLI tool in 4 rounds of head-to-head match ups.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "run": "node index.js",
-    "transpile": "tsc src/index.ts --outDir ."
+    "transpile": "tsc index.ts --outDir ../dist"
   },
   "keywords": [],
   "author": "Chris Pennington",
   "license": "ISC",
   "dependencies": {
-    "@clack/prompts": "^0.7.0",
-    "picocolors": "^1.0.0"
+    "@clack/prompts": "^0.7.0"
   }
 }

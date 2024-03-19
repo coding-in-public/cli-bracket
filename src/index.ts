@@ -2,7 +2,6 @@
 
 import * as p from "@clack/prompts";
 import { setTimeout } from "node:timers/promises";
-import color from "picocolors";
 
 const cliTools = [
   "jq",
@@ -28,7 +27,7 @@ async function main() {
 
   await setTimeout(500);
 
-  p.intro(`${color.bgGreen(color.black(" Welcome to CLI Madness 2024 "))}`);
+  p.intro(" Welcome to CLI Madness 2024 ");
 
   const project = await p.group(
     {
